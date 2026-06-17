@@ -232,7 +232,7 @@
     <h1>Staff World Cup <span>2026</span> Sweepstake</h1>
     <p>Western Sydney Wanderers FC &nbsp;·&nbsp; 6 pts exact score &nbsp;·&nbsp; 3 pts correct winner</p>
   </div>
-  <div class="updated-badge" id="updatedBadge">Updated Jun 17</div>
+  <div class="updated-badge" id="updatedBadge">Updated Jun 17 · AEST</div>
 </header>
 
 <div class="tabs">
@@ -288,100 +288,99 @@ const CONTESTANTS = ['ALEX','ANEL','ANTE','EDDIE','JONAS','LACHLAN','VICTOR','ZA
 // Actual results - team names MUST match prediction keys
 // sort field: "YYYYMMDD-HH" for chronological ordering
 const ACTUAL_RESULTS = [
-  // Jun 11
-  { group:'A', date:'Jun 11', time:'14:00', sort:'20260611-14', t1:'Mexico',       g1:2, t2:'South Africa',       g2:0 },
-  { group:'A', date:'Jun 11', time:'18:00', sort:'20260611-18', t1:'South Korea',  g1:2, t2:'Czechia',            g2:1 },
-  // Jun 12
-  { group:'B', date:'Jun 12', time:'15:00', sort:'20260612-15', t1:'Canada',       g1:1, t2:'Bosnia-Herzegovina', g2:1 },
-  { group:'D', date:'Jun 12', time:'19:00', sort:'20260612-19', t1:'USA',          g1:4, t2:'Paraguay',           g2:1 },
-  // Jun 13
-  { group:'B', date:'Jun 13', time:'12:00', sort:'20260613-12', t1:'Qatar',        g1:1, t2:'Switzerland',        g2:1 },
-  { group:'C', date:'Jun 13', time:'15:00', sort:'20260613-15', t1:'Brazil',       g1:1, t2:'Morocco',            g2:1 },
-  { group:'C', date:'Jun 13', time:'18:00', sort:'20260613-18', t1:'Haiti',        g1:0, t2:'Scotland',           g2:1 },
-  { group:'D', date:'Jun 13', time:'21:00', sort:'20260613-21', t1:'Australia',    g1:2, t2:'Türkiye',            g2:0 },
-  // Jun 14
-  { group:'E', date:'Jun 14', time:'12:00', sort:'20260614-12', t1:'Germany',      g1:7, t2:'Curacao',            g2:1 },
-  { group:'F', date:'Jun 14', time:'15:00', sort:'20260614-15', t1:'Netherlands',  g1:2, t2:'Japan',              g2:2 },
-  { group:'E', date:'Jun 14', time:'18:00', sort:'20260614-18', t1:"Côte d'Ivoire",g1:1, t2:'Ecuador',           g2:0 },
-  { group:'F', date:'Jun 14', time:'21:00', sort:'20260614-21', t1:'Sweden',       g1:5, t2:'Tunisia',            g2:1 },
-  // Jun 15
-  { group:'G', date:'Jun 15', time:'12:00', sort:'20260615-12', t1:'Belgium',      g1:1, t2:'Egypt',              g2:1 },
-  { group:'H', date:'Jun 15', time:'15:00', sort:'20260615-15', t1:'Spain',        g1:0, t2:'Cabo Verde',         g2:0 },
-  { group:'G', date:'Jun 15', time:'18:00', sort:'20260615-18', t1:'IR Iran',      g1:2, t2:'New Zealand',        g2:2 },
-  { group:'H', date:'Jun 15', time:'21:00', sort:'20260615-21', t1:'Saudi Arabia', g1:1, t2:'Uruguay',            g2:1 },
-  // Jun 16
-  { group:'I', date:'Jun 16', time:'18:00', sort:'20260616-18', t1:'France',       g1:3, t2:'Senegal',            g2:1 },
-  { group:'I', date:'Jun 16', time:'21:00', sort:'20260616-21', t1:'Iraq',         g1:1, t2:'Norway',             g2:4 },
-  // Jun 16 Group J
-  { group:'J', date:'Jun 16', time:'12:00', sort:'20260616-12', t1:'Austria',      g1:3, t2:'Jordan',             g2:1 },
-  { group:'J', date:'Jun 16', time:'15:00', sort:'20260616-15', t1:'Argentina',    g1:3, t2:'Algeria',            g2:0 },
-].sort((a, b) => a.sort.localeCompare(b.sort)).map(m => ({ ...m, scored: m.sort >= '20260615' }));
+  // Jun 12 AEST (Jun 11 US)
+  { group:'A', date:'Jun 12', time:'05:00', sort:'20260612-05', t1:'Mexico',       g1:2, t2:'South Africa',       g2:0 },
+  { group:'A', date:'Jun 12', time:'12:00', sort:'20260612-12', t1:'South Korea',  g1:2, t2:'Czechia',            g2:1 },
+  // Jun 13 AEST (Jun 12 US)
+  { group:'B', date:'Jun 13', time:'05:00', sort:'20260613-05', t1:'Canada',       g1:1, t2:'Bosnia-Herzegovina', g2:1 },
+  { group:'D', date:'Jun 13', time:'11:00', sort:'20260613-11', t1:'USA',          g1:4, t2:'Paraguay',           g2:1 },
+  // Jun 14 AEST (Jun 13 US)
+  { group:'B', date:'Jun 14', time:'05:00', sort:'20260614-05', t1:'Qatar',        g1:1, t2:'Switzerland',        g2:1 },
+  { group:'C', date:'Jun 14', time:'08:00', sort:'20260614-08', t1:'Brazil',       g1:1, t2:'Morocco',            g2:1 },
+  { group:'C', date:'Jun 14', time:'11:00', sort:'20260614-11', t1:'Haiti',        g1:0, t2:'Scotland',           g2:1 },
+  { group:'D', date:'Jun 14', time:'14:00', sort:'20260614-14', t1:'Australia',    g1:2, t2:'Türkiye',            g2:0 },
+  // Jun 15 AEST (Jun 14 US)
+  { group:'E', date:'Jun 15', time:'03:00', sort:'20260615-03', t1:'Germany',      g1:7, t2:'Curacao',            g2:1 },
+  { group:'F', date:'Jun 15', time:'06:00', sort:'20260615-06', t1:'Netherlands',  g1:2, t2:'Japan',              g2:2 },
+  { group:'E', date:'Jun 15', time:'09:00', sort:'20260615-09', t1:"Côte d'Ivoire",g1:1, t2:'Ecuador',           g2:0 },
+  { group:'F', date:'Jun 15', time:'12:00', sort:'20260615-12', t1:'Sweden',       g1:5, t2:'Tunisia',            g2:1 },
+  // Jun 16 AEST (Jun 15 US) — scored from here
+  { group:'H', date:'Jun 16', time:'02:00', sort:'20260616-02', t1:'Spain',        g1:0, t2:'Cabo Verde',         g2:0 },
+  { group:'G', date:'Jun 16', time:'05:00', sort:'20260616-05', t1:'Belgium',      g1:1, t2:'Egypt',              g2:1 },
+  { group:'H', date:'Jun 16', time:'08:00', sort:'20260616-08', t1:'Saudi Arabia', g1:1, t2:'Uruguay',            g2:1 },
+  { group:'G', date:'Jun 16', time:'11:00', sort:'20260616-11', t1:'IR Iran',      g1:2, t2:'New Zealand',        g2:2 },
+  // Jun 17 AEST (Jun 16 US)
+  { group:'I', date:'Jun 17', time:'05:00', sort:'20260617-05', t1:'France',       g1:3, t2:'Senegal',            g2:1 },
+  { group:'I', date:'Jun 17', time:'08:00', sort:'20260617-08', t1:'Iraq',         g1:1, t2:'Norway',             g2:4 },
+  { group:'J', date:'Jun 17', time:'11:00', sort:'20260617-11', t1:'Argentina',    g1:3, t2:'Algeria',            g2:0 },
+  { group:'J', date:'Jun 17', time:'14:00', sort:'20260617-14', t1:'Austria',      g1:3, t2:'Jordan',             g2:1 },
+].sort((a, b) => a.sort.localeCompare(b.sort)).map(m => ({ ...m, scored: m.sort >= '20260616' }));
 
-// All upcoming (unplayed) matches
+// All upcoming (unplayed) matches — all times AEST (UTC+10)
 const UPCOMING_MATCHES = [
-  // Jun 17 – Groups K, L
-  { group:'K', date:'Jun 17', time:'13:00', sort:'20260617-13', t1:'Portugal',          t2:'DR Congo' },
-  { group:'L', date:'Jun 17', time:'16:00', sort:'20260617-16', t1:'England',           t2:'Croatia' },
-  { group:'L', date:'Jun 17', time:'19:00', sort:'20260617-19', t1:'Ghana',             t2:'Panama' },
-  { group:'K', date:'Jun 17', time:'22:00', sort:'20260617-22', t1:'Uzbekistan',        t2:'Colombia' },
-  // Jun 18 – Groups A, B
-  { group:'A', date:'Jun 18', time:'12:00', sort:'20260618-12', t1:'Czechia',           t2:'South Africa' },
-  { group:'B', date:'Jun 18', time:'15:00', sort:'20260618-15', t1:'Switzerland',       t2:'Bosnia-Herzegovina' },
-  { group:'B', date:'Jun 18', time:'18:00', sort:'20260618-18', t1:'Canada',            t2:'Qatar' },
-  { group:'A', date:'Jun 18', time:'21:00', sort:'20260618-21', t1:'Mexico',            t2:'South Korea' },
-  // Jun 19 – Groups C, D
-  { group:'C', date:'Jun 19', time:'12:00', sort:'20260619-12', t1:'Scotland',          t2:'Morocco' },
-  { group:'C', date:'Jun 19', time:'15:00', sort:'20260619-15', t1:'Brazil',            t2:'Haiti' },
-  { group:'D', date:'Jun 19', time:'18:00', sort:'20260619-18', t1:'Türkiye',           t2:'Paraguay' },
-  { group:'D', date:'Jun 19', time:'21:00', sort:'20260619-21', t1:'USA',               t2:'Australia' },
-  // Jun 20 – Groups E, F
-  { group:'E', date:'Jun 20', time:'12:00', sort:'20260620-12', t1:'Germany',           t2:"Côte d'Ivoire" },
-  { group:'F', date:'Jun 20', time:'15:00', sort:'20260620-15', t1:'Netherlands',       t2:'Sweden' },
-  { group:'E', date:'Jun 20', time:'18:00', sort:'20260620-18', t1:'Ecuador',           t2:'Curacao' },
-  { group:'F', date:'Jun 20', time:'21:00', sort:'20260620-21', t1:'Tunisia',           t2:'Japan' },
-  // Jun 21 – Groups G, H
-  { group:'H', date:'Jun 21', time:'12:00', sort:'20260621-12', t1:'Spain',             t2:'Saudi Arabia' },
-  { group:'H', date:'Jun 21', time:'15:00', sort:'20260621-15', t1:'Uruguay',           t2:'Cabo Verde' },
-  { group:'G', date:'Jun 21', time:'18:00', sort:'20260621-18', t1:'Belgium',           t2:'IR Iran' },
-  { group:'G', date:'Jun 21', time:'21:00', sort:'20260621-21', t1:'New Zealand',       t2:'Egypt' },
-  // Jun 22 – Groups I, J
-  { group:'I', date:'Jun 22', time:'12:00', sort:'20260622-12', t1:'France',            t2:'Iraq' },
-  { group:'I', date:'Jun 22', time:'15:00', sort:'20260622-15', t1:'Norway',            t2:'Senegal' },
-  { group:'J', date:'Jun 22', time:'18:00', sort:'20260622-18', t1:'Argentina',         t2:'Austria' },
-  { group:'J', date:'Jun 22', time:'21:00', sort:'20260622-21', t1:'Jordan',            t2:'Algeria' },
-  // Jun 23 – Groups K, L
-  { group:'L', date:'Jun 23', time:'12:00', sort:'20260623-12', t1:'England',           t2:'Ghana' },
-  { group:'L', date:'Jun 23', time:'15:00', sort:'20260623-15', t1:'Panama',            t2:'Croatia' },
-  { group:'K', date:'Jun 23', time:'18:00', sort:'20260623-18', t1:'Portugal',          t2:'Uzbekistan' },
-  { group:'K', date:'Jun 23', time:'21:00', sort:'20260623-21', t1:'Colombia',          t2:'DR Congo' },
-  // Jun 24 – Final round Groups A, B, C (simultaneous)
-  { group:'C', date:'Jun 24', time:'18:00', sort:'20260624-18a', t1:'Morocco',          t2:'Haiti' },
-  { group:'C', date:'Jun 24', time:'18:00', sort:'20260624-18b', t1:'Scotland',         t2:'Brazil' },
-  { group:'B', date:'Jun 24', time:'18:00', sort:'20260624-18c', t1:'Switzerland',      t2:'Canada' },
-  { group:'B', date:'Jun 24', time:'18:00', sort:'20260624-18d', t1:'Bosnia-Herzegovina', t2:'Qatar' },
-  { group:'A', date:'Jun 24', time:'21:00', sort:'20260624-21a', t1:'Czechia',          t2:'Mexico' },
-  { group:'A', date:'Jun 24', time:'21:00', sort:'20260624-21b', t1:'South Africa',     t2:'South Korea' },
-  // Jun 25 – Final round Groups D, E, F (simultaneous)
-  { group:'E', date:'Jun 25', time:'18:00', sort:'20260625-18a', t1:'Ecuador',          t2:'Germany' },
-  { group:'E', date:'Jun 25', time:'18:00', sort:'20260625-18b', t1:'Curacao',          t2:"Côte d'Ivoire" },
-  { group:'F', date:'Jun 25', time:'18:00', sort:'20260625-18c', t1:'Tunisia',          t2:'Netherlands' },
-  { group:'F', date:'Jun 25', time:'18:00', sort:'20260625-18d', t1:'Japan',            t2:'Sweden' },
-  { group:'D', date:'Jun 25', time:'21:00', sort:'20260625-21a', t1:'Türkiye',          t2:'USA' },
-  { group:'D', date:'Jun 25', time:'21:00', sort:'20260625-21b', t1:'Paraguay',         t2:'Australia' },
-  // Jun 26 – Final round Groups G, H, I (simultaneous)
-  { group:'I', date:'Jun 26', time:'18:00', sort:'20260626-18a', t1:'Norway',           t2:'France' },
-  { group:'I', date:'Jun 26', time:'18:00', sort:'20260626-18b', t1:'Senegal',          t2:'Iraq' },
-  { group:'G', date:'Jun 26', time:'18:00', sort:'20260626-18c', t1:'New Zealand',      t2:'Belgium' },
-  { group:'G', date:'Jun 26', time:'18:00', sort:'20260626-18d', t1:'Egypt',            t2:'IR Iran' },
-  { group:'H', date:'Jun 26', time:'21:00', sort:'20260626-21a', t1:'Uruguay',          t2:'Spain' },
-  { group:'H', date:'Jun 26', time:'21:00', sort:'20260626-21b', t1:'Cabo Verde',       t2:'Saudi Arabia' },
-  // Jun 27 – Final round Groups J, K, L (simultaneous)
-  { group:'L', date:'Jun 27', time:'18:00', sort:'20260627-18a', t1:'Panama',           t2:'England' },
-  { group:'L', date:'Jun 27', time:'18:00', sort:'20260627-18b', t1:'Croatia',          t2:'Ghana' },
-  { group:'J', date:'Jun 27', time:'18:00', sort:'20260627-18c', t1:'Jordan',           t2:'Argentina' },
-  { group:'J', date:'Jun 27', time:'18:00', sort:'20260627-18d', t1:'Algeria',          t2:'Austria' },
-  { group:'K', date:'Jun 27', time:'21:00', sort:'20260627-21a', t1:'Colombia',         t2:'Portugal' },
-  { group:'K', date:'Jun 27', time:'21:00', sort:'20260627-21b', t1:'DR Congo',         t2:'Uzbekistan' },
+  // Jun 18 AEST (Jun 17 US) – Groups K, L
+  { group:'K', date:'Jun 18', time:'03:00', sort:'20260618-03', t1:'Portugal',            t2:'DR Congo' },
+  { group:'L', date:'Jun 18', time:'06:00', sort:'20260618-06', t1:'England',             t2:'Croatia' },
+  { group:'L', date:'Jun 18', time:'09:00', sort:'20260618-09', t1:'Ghana',               t2:'Panama' },
+  { group:'K', date:'Jun 18', time:'12:00', sort:'20260618-12', t1:'Uzbekistan',          t2:'Colombia' },
+  // Jun 19 AEST (Jun 18 US) – Groups A, B
+  { group:'A', date:'Jun 19', time:'02:00', sort:'20260619-02', t1:'Czechia',             t2:'South Africa' },
+  { group:'B', date:'Jun 19', time:'05:00', sort:'20260619-05', t1:'Switzerland',         t2:'Bosnia-Herzegovina' },
+  { group:'B', date:'Jun 19', time:'08:00', sort:'20260619-08', t1:'Canada',              t2:'Qatar' },
+  { group:'A', date:'Jun 19', time:'11:00', sort:'20260619-11', t1:'Mexico',              t2:'South Korea' },
+  // Jun 20 AEST (Jun 19 US) – Groups C, D
+  { group:'D', date:'Jun 20', time:'05:00', sort:'20260620-05', t1:'USA',                 t2:'Australia' },
+  { group:'C', date:'Jun 20', time:'08:00', sort:'20260620-08', t1:'Scotland',            t2:'Morocco' },
+  { group:'C', date:'Jun 20', time:'10:30', sort:'20260620-1030', t1:'Brazil',            t2:'Haiti' },
+  { group:'D', date:'Jun 20', time:'13:00', sort:'20260620-13', t1:'Türkiye',             t2:'Paraguay' },
+  // Jun 21 AEST (Jun 20 US) – Groups E, F
+  { group:'F', date:'Jun 21', time:'03:00', sort:'20260621-03', t1:'Netherlands',         t2:'Sweden' },
+  { group:'E', date:'Jun 21', time:'06:00', sort:'20260621-06', t1:'Germany',             t2:"Côte d'Ivoire" },
+  { group:'E', date:'Jun 21', time:'10:00', sort:'20260621-10', t1:'Ecuador',             t2:'Curacao' },
+  { group:'F', date:'Jun 21', time:'14:00', sort:'20260621-14', t1:'Tunisia',             t2:'Japan' },
+  // Jun 22 AEST (Jun 21 US) – Groups G, H
+  { group:'H', date:'Jun 22', time:'02:00', sort:'20260622-02', t1:'Spain',               t2:'Saudi Arabia' },
+  { group:'G', date:'Jun 22', time:'05:00', sort:'20260622-05', t1:'Belgium',             t2:'IR Iran' },
+  { group:'H', date:'Jun 22', time:'08:00', sort:'20260622-08', t1:'Uruguay',             t2:'Cabo Verde' },
+  { group:'G', date:'Jun 22', time:'11:00', sort:'20260622-11', t1:'New Zealand',         t2:'Egypt' },
+  // Jun 23 AEST (Jun 22 US) – Groups I, J
+  { group:'J', date:'Jun 23', time:'03:00', sort:'20260623-03', t1:'Argentina',           t2:'Austria' },
+  { group:'I', date:'Jun 23', time:'07:00', sort:'20260623-07', t1:'France',              t2:'Iraq' },
+  { group:'I', date:'Jun 23', time:'10:00', sort:'20260623-10', t1:'Norway',              t2:'Senegal' },
+  { group:'J', date:'Jun 23', time:'13:00', sort:'20260623-13', t1:'Jordan',              t2:'Algeria' },
+  // Jun 24 AEST (Jun 23 US) – Groups K, L
+  { group:'K', date:'Jun 24', time:'03:00', sort:'20260624-03', t1:'Portugal',            t2:'Uzbekistan' },
+  { group:'L', date:'Jun 24', time:'06:00', sort:'20260624-06', t1:'England',             t2:'Ghana' },
+  { group:'L', date:'Jun 24', time:'09:00', sort:'20260624-09', t1:'Panama',              t2:'Croatia' },
+  { group:'K', date:'Jun 24', time:'12:00', sort:'20260624-12', t1:'Colombia',            t2:'DR Congo' },
+  // Jun 25 AEST (Jun 24 US) – Final round Groups A, B, C (simultaneous)
+  { group:'B', date:'Jun 25', time:'05:00', sort:'20260625-05a', t1:'Switzerland',        t2:'Canada' },
+  { group:'B', date:'Jun 25', time:'05:00', sort:'20260625-05b', t1:'Bosnia-Herzegovina', t2:'Qatar' },
+  { group:'C', date:'Jun 25', time:'08:00', sort:'20260625-08a', t1:'Scotland',           t2:'Brazil' },
+  { group:'C', date:'Jun 25', time:'08:00', sort:'20260625-08b', t1:'Morocco',            t2:'Haiti' },
+  { group:'A', date:'Jun 25', time:'11:00', sort:'20260625-11a', t1:'Czechia',            t2:'Mexico' },
+  { group:'A', date:'Jun 25', time:'11:00', sort:'20260625-11b', t1:'South Africa',       t2:'South Korea' },
+  // Jun 26 AEST (Jun 25 US) – Final round Groups D, E, F (simultaneous)
+  { group:'E', date:'Jun 26', time:'06:00', sort:'20260626-06a', t1:'Curacao',            t2:"Côte d'Ivoire" },
+  { group:'E', date:'Jun 26', time:'06:00', sort:'20260626-06b', t1:'Ecuador',            t2:'Germany' },
+  { group:'F', date:'Jun 26', time:'09:00', sort:'20260626-09a', t1:'Japan',              t2:'Sweden' },
+  { group:'F', date:'Jun 26', time:'09:00', sort:'20260626-09b', t1:'Tunisia',            t2:'Netherlands' },
+  { group:'D', date:'Jun 26', time:'12:00', sort:'20260626-12a', t1:'Türkiye',            t2:'USA' },
+  { group:'D', date:'Jun 26', time:'12:00', sort:'20260626-12b', t1:'Paraguay',           t2:'Australia' },
+  // Jun 27 AEST (Jun 26 US) – Final round Groups G, H, I (simultaneous)
+  { group:'I', date:'Jun 27', time:'05:00', sort:'20260627-05a', t1:'Norway',             t2:'France' },
+  { group:'I', date:'Jun 27', time:'05:00', sort:'20260627-05b', t1:'Senegal',            t2:'Iraq' },
+  { group:'H', date:'Jun 27', time:'10:00', sort:'20260627-10a', t1:'Cabo Verde',         t2:'Saudi Arabia' },
+  { group:'H', date:'Jun 27', time:'10:00', sort:'20260627-10b', t1:'Uruguay',            t2:'Spain' },
+  { group:'G', date:'Jun 27', time:'13:00', sort:'20260627-13a', t1:'Egypt',              t2:'IR Iran' },
+  { group:'G', date:'Jun 27', time:'13:00', sort:'20260627-13b', t1:'New Zealand',        t2:'Belgium' },
+  // Jun 28 AEST (Jun 27 US) – Final round Groups J, K, L (simultaneous)
+  { group:'L', date:'Jun 28', time:'07:00', sort:'20260628-07a', t1:'Panama',             t2:'England' },
+  { group:'L', date:'Jun 28', time:'07:00', sort:'20260628-07b', t1:'Croatia',            t2:'Ghana' },
+  { group:'K', date:'Jun 28', time:'09:30', sort:'20260628-0930a', t1:'Colombia',         t2:'Portugal' },
+  { group:'K', date:'Jun 28', time:'09:30', sort:'20260628-0930b', t1:'DR Congo',         t2:'Uzbekistan' },
+  { group:'J', date:'Jun 28', time:'12:00', sort:'20260628-12a', t1:'Algeria',            t2:'Austria' },
+  { group:'J', date:'Jun 28', time:'12:00', sort:'20260628-12b', t1:'Jordan',             t2:'Argentina' },
 ].sort((a, b) => a.sort.localeCompare(b.sort));
 
 // Group stage predictions: { contestant: { 'TeamA|TeamB': [hg, ag] } }
@@ -512,7 +511,7 @@ function renderMatches() {
     html += `<div class="match-card" data-group="${match.group}">
       <div class="match-header">
         <span class="match-group">Group ${match.group}</span>
-        <span class="match-date">${match.date} · ${match.time}</span>
+        <span class="match-date">${match.date} · ${match.time} AEST</span>
         <span class="match-teams">${match.t1} vs ${match.t2}</span>
         <span class="actual-score">${match.g1} – ${match.g2}</span>
       </div>
@@ -543,7 +542,7 @@ function renderMatches() {
       html += `<div class="match-card" data-group="${match.group}" style="border-color:#2a2a0a">
         <div class="match-header" style="background:#1e1e00">
           <span class="match-group" style="background:#b45309">${'Group ' + match.group}</span>
-          <span class="match-date">${match.date} · ${match.time}</span>
+          <span class="match-date">${match.date} · ${match.time} AEST</span>
           <span class="match-teams">${match.t1} vs ${match.t2}</span>
           <span style="color:#666;font-size:0.82em;font-style:italic;padding:4px 10px;border:1px solid #333;border-radius:6px">Upcoming</span>
         </div>

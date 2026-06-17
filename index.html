@@ -264,6 +264,9 @@
     <button class="filter-btn" onclick="filterMatches('G', this)">Group G</button>
     <button class="filter-btn" onclick="filterMatches('H', this)">Group H</button>
     <button class="filter-btn" onclick="filterMatches('I', this)">Group I</button>
+    <button class="filter-btn" onclick="filterMatches('J', this)">Group J</button>
+    <button class="filter-btn" onclick="filterMatches('K', this)">Group K</button>
+    <button class="filter-btn" onclick="filterMatches('L', this)">Group L</button>
   </div>
   <div class="matches-grid" id="matchesGrid"></div>
 </div>
@@ -309,7 +312,77 @@ const ACTUAL_RESULTS = [
   // Jun 16
   { group:'I', date:'Jun 16', time:'18:00', sort:'20260616-18', t1:'France',       g1:3, t2:'Senegal',            g2:1 },
   { group:'I', date:'Jun 16', time:'21:00', sort:'20260616-21', t1:'Iraq',         g1:1, t2:'Norway',             g2:4 },
+  // Jun 16 Group J
+  { group:'J', date:'Jun 16', time:'12:00', sort:'20260616-12', t1:'Austria',      g1:3, t2:'Jordan',             g2:1 },
+  { group:'J', date:'Jun 16', time:'15:00', sort:'20260616-15', t1:'Argentina',    g1:3, t2:'Algeria',            g2:0 },
 ].sort((a, b) => a.sort.localeCompare(b.sort)).map(m => ({ ...m, scored: m.sort >= '20260615' }));
+
+// All upcoming (unplayed) matches
+const UPCOMING_MATCHES = [
+  // Jun 17 – Groups K, L
+  { group:'K', date:'Jun 17', time:'13:00', sort:'20260617-13', t1:'Portugal',          t2:'DR Congo' },
+  { group:'L', date:'Jun 17', time:'16:00', sort:'20260617-16', t1:'England',           t2:'Croatia' },
+  { group:'L', date:'Jun 17', time:'19:00', sort:'20260617-19', t1:'Ghana',             t2:'Panama' },
+  { group:'K', date:'Jun 17', time:'22:00', sort:'20260617-22', t1:'Uzbekistan',        t2:'Colombia' },
+  // Jun 18 – Groups A, B
+  { group:'A', date:'Jun 18', time:'12:00', sort:'20260618-12', t1:'Czechia',           t2:'South Africa' },
+  { group:'B', date:'Jun 18', time:'15:00', sort:'20260618-15', t1:'Switzerland',       t2:'Bosnia-Herzegovina' },
+  { group:'B', date:'Jun 18', time:'18:00', sort:'20260618-18', t1:'Canada',            t2:'Qatar' },
+  { group:'A', date:'Jun 18', time:'21:00', sort:'20260618-21', t1:'Mexico',            t2:'South Korea' },
+  // Jun 19 – Groups C, D
+  { group:'C', date:'Jun 19', time:'12:00', sort:'20260619-12', t1:'Scotland',          t2:'Morocco' },
+  { group:'C', date:'Jun 19', time:'15:00', sort:'20260619-15', t1:'Brazil',            t2:'Haiti' },
+  { group:'D', date:'Jun 19', time:'18:00', sort:'20260619-18', t1:'Türkiye',           t2:'Paraguay' },
+  { group:'D', date:'Jun 19', time:'21:00', sort:'20260619-21', t1:'USA',               t2:'Australia' },
+  // Jun 20 – Groups E, F
+  { group:'E', date:'Jun 20', time:'12:00', sort:'20260620-12', t1:'Germany',           t2:"Côte d'Ivoire" },
+  { group:'F', date:'Jun 20', time:'15:00', sort:'20260620-15', t1:'Netherlands',       t2:'Sweden' },
+  { group:'E', date:'Jun 20', time:'18:00', sort:'20260620-18', t1:'Ecuador',           t2:'Curacao' },
+  { group:'F', date:'Jun 20', time:'21:00', sort:'20260620-21', t1:'Tunisia',           t2:'Japan' },
+  // Jun 21 – Groups G, H
+  { group:'H', date:'Jun 21', time:'12:00', sort:'20260621-12', t1:'Spain',             t2:'Saudi Arabia' },
+  { group:'H', date:'Jun 21', time:'15:00', sort:'20260621-15', t1:'Uruguay',           t2:'Cabo Verde' },
+  { group:'G', date:'Jun 21', time:'18:00', sort:'20260621-18', t1:'Belgium',           t2:'IR Iran' },
+  { group:'G', date:'Jun 21', time:'21:00', sort:'20260621-21', t1:'New Zealand',       t2:'Egypt' },
+  // Jun 22 – Groups I, J
+  { group:'I', date:'Jun 22', time:'12:00', sort:'20260622-12', t1:'France',            t2:'Iraq' },
+  { group:'I', date:'Jun 22', time:'15:00', sort:'20260622-15', t1:'Norway',            t2:'Senegal' },
+  { group:'J', date:'Jun 22', time:'18:00', sort:'20260622-18', t1:'Argentina',         t2:'Austria' },
+  { group:'J', date:'Jun 22', time:'21:00', sort:'20260622-21', t1:'Jordan',            t2:'Algeria' },
+  // Jun 23 – Groups K, L
+  { group:'L', date:'Jun 23', time:'12:00', sort:'20260623-12', t1:'England',           t2:'Ghana' },
+  { group:'L', date:'Jun 23', time:'15:00', sort:'20260623-15', t1:'Panama',            t2:'Croatia' },
+  { group:'K', date:'Jun 23', time:'18:00', sort:'20260623-18', t1:'Portugal',          t2:'Uzbekistan' },
+  { group:'K', date:'Jun 23', time:'21:00', sort:'20260623-21', t1:'Colombia',          t2:'DR Congo' },
+  // Jun 24 – Final round Groups A, B, C (simultaneous)
+  { group:'C', date:'Jun 24', time:'18:00', sort:'20260624-18a', t1:'Morocco',          t2:'Haiti' },
+  { group:'C', date:'Jun 24', time:'18:00', sort:'20260624-18b', t1:'Scotland',         t2:'Brazil' },
+  { group:'B', date:'Jun 24', time:'18:00', sort:'20260624-18c', t1:'Switzerland',      t2:'Canada' },
+  { group:'B', date:'Jun 24', time:'18:00', sort:'20260624-18d', t1:'Bosnia-Herzegovina', t2:'Qatar' },
+  { group:'A', date:'Jun 24', time:'21:00', sort:'20260624-21a', t1:'Czechia',          t2:'Mexico' },
+  { group:'A', date:'Jun 24', time:'21:00', sort:'20260624-21b', t1:'South Africa',     t2:'South Korea' },
+  // Jun 25 – Final round Groups D, E, F (simultaneous)
+  { group:'E', date:'Jun 25', time:'18:00', sort:'20260625-18a', t1:'Ecuador',          t2:'Germany' },
+  { group:'E', date:'Jun 25', time:'18:00', sort:'20260625-18b', t1:'Curacao',          t2:"Côte d'Ivoire" },
+  { group:'F', date:'Jun 25', time:'18:00', sort:'20260625-18c', t1:'Tunisia',          t2:'Netherlands' },
+  { group:'F', date:'Jun 25', time:'18:00', sort:'20260625-18d', t1:'Japan',            t2:'Sweden' },
+  { group:'D', date:'Jun 25', time:'21:00', sort:'20260625-21a', t1:'Türkiye',          t2:'USA' },
+  { group:'D', date:'Jun 25', time:'21:00', sort:'20260625-21b', t1:'Paraguay',         t2:'Australia' },
+  // Jun 26 – Final round Groups G, H, I (simultaneous)
+  { group:'I', date:'Jun 26', time:'18:00', sort:'20260626-18a', t1:'Norway',           t2:'France' },
+  { group:'I', date:'Jun 26', time:'18:00', sort:'20260626-18b', t1:'Senegal',          t2:'Iraq' },
+  { group:'G', date:'Jun 26', time:'18:00', sort:'20260626-18c', t1:'New Zealand',      t2:'Belgium' },
+  { group:'G', date:'Jun 26', time:'18:00', sort:'20260626-18d', t1:'Egypt',            t2:'IR Iran' },
+  { group:'H', date:'Jun 26', time:'21:00', sort:'20260626-21a', t1:'Uruguay',          t2:'Spain' },
+  { group:'H', date:'Jun 26', time:'21:00', sort:'20260626-21b', t1:'Cabo Verde',       t2:'Saudi Arabia' },
+  // Jun 27 – Final round Groups J, K, L (simultaneous)
+  { group:'L', date:'Jun 27', time:'18:00', sort:'20260627-18a', t1:'Panama',           t2:'England' },
+  { group:'L', date:'Jun 27', time:'18:00', sort:'20260627-18b', t1:'Croatia',          t2:'Ghana' },
+  { group:'J', date:'Jun 27', time:'18:00', sort:'20260627-18c', t1:'Jordan',           t2:'Argentina' },
+  { group:'J', date:'Jun 27', time:'18:00', sort:'20260627-18d', t1:'Algeria',          t2:'Austria' },
+  { group:'K', date:'Jun 27', time:'21:00', sort:'20260627-21a', t1:'Colombia',         t2:'Portugal' },
+  { group:'K', date:'Jun 27', time:'21:00', sort:'20260627-21b', t1:'DR Congo',         t2:'Uzbekistan' },
+].sort((a, b) => a.sort.localeCompare(b.sort));
 
 // Group stage predictions: { contestant: { 'TeamA|TeamB': [hg, ag] } }
 const GROUP_PREDS = {
@@ -331,13 +404,21 @@ function getWinner(g1, g2) {
   return 0; // draw
 }
 
+const TEAM_ALIASES = { 'Congo DR': 'DR Congo', 'Iran': 'IR Iran' };
+function normalizeTeam(t) { return TEAM_ALIASES[t] || t; }
+
 function getPrediction(contestant, t1, t2) {
   const gp = GROUP_PREDS[contestant];
   if (!gp) return null;
-  const k1 = `${t1}|${t2}`;
-  const k2 = `${t2}|${t1}`;
-  if (gp[k1] !== undefined) return { p1: gp[k1][0], p2: gp[k1][1] };
-  if (gp[k2] !== undefined) return { p1: gp[k2][1], p2: gp[k2][0] }; // swapped
+  const n1 = normalizeTeam(t1), n2 = normalizeTeam(t2);
+  // Try key as t1|t2 direction (normal)
+  for (const k of [`${t1}|${t2}`, `${n1}|${n2}`, `${t1}|${n2}`, `${n1}|${t2}`]) {
+    if (gp[k] !== undefined) return { p1: gp[k][0], p2: gp[k][1] };
+  }
+  // Try key as t2|t1 direction (swapped)
+  for (const k of [`${t2}|${t1}`, `${n2}|${n1}`, `${t2}|${n1}`, `${n2}|${t1}`]) {
+    if (gp[k] !== undefined) return { p1: gp[k][1], p2: gp[k][0] };
+  }
   return null;
 }
 
@@ -454,6 +535,32 @@ function renderMatches() {
 
     html += `</div></div>`;
   });
+
+  // ── Upcoming matches section ──
+  if (UPCOMING_MATCHES.length > 0) {
+    html += `<div class="section-title" style="margin-top:40px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #2a2a2a">📅 Upcoming Matches — All Predictions</div>`;
+    UPCOMING_MATCHES.forEach(match => {
+      html += `<div class="match-card" data-group="${match.group}" style="border-color:#2a2a0a">
+        <div class="match-header" style="background:#1e1e00">
+          <span class="match-group" style="background:#b45309">${'Group ' + match.group}</span>
+          <span class="match-date">${match.date} · ${match.time}</span>
+          <span class="match-teams">${match.t1} vs ${match.t2}</span>
+          <span style="color:#666;font-size:0.82em;font-style:italic;padding:4px 10px;border:1px solid #333;border-radius:6px">Upcoming</span>
+        </div>
+        <div class="predictions-grid">`;
+      CONTESTANTS.forEach(c => {
+        const pred = getPrediction(c, match.t1, match.t2);
+        const predStr = pred ? `${pred.p1}–${pred.p2}` : '–';
+        html += `<div class="pred-cell">
+          <div class="pred-name">${c.split(' ')[0]}</div>
+          <div class="pred-score">${predStr}</div>
+          <div class="pred-pts pts-na">Pending</div>
+        </div>`;
+      });
+      html += `</div></div>`;
+    });
+  }
+
   document.getElementById('matchesGrid').innerHTML = html;
 }
 

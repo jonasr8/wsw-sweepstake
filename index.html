@@ -232,7 +232,7 @@
     <h1>Staff World Cup <span>2026</span> Sweepstake</h1>
     <p>Western Sydney Wanderers FC &nbsp;·&nbsp; 6 pts exact score &nbsp;·&nbsp; 3 pts correct winner</p>
   </div>
-  <div class="updated-badge" id="updatedBadge">Updated Jun 17 · AEST</div>
+  <div class="updated-badge" id="updatedBadge">Updated Jun 18 · AEST</div>
 </header>
 
 <div class="tabs">
@@ -314,13 +314,14 @@ const ACTUAL_RESULTS = [
   { group:'I', date:'Jun 17', time:'08:00', sort:'20260617-08', t1:'Iraq',         g1:1, t2:'Norway',             g2:4 },
   { group:'J', date:'Jun 17', time:'11:00', sort:'20260617-11', t1:'Argentina',    g1:3, t2:'Algeria',            g2:0 },
   { group:'J', date:'Jun 17', time:'14:00', sort:'20260617-14', t1:'Austria',      g1:3, t2:'Jordan',             g2:1 },
+  // Jun 18 AEST (Jun 17 US)
+  { group:'K', date:'Jun 18', time:'03:00', sort:'20260618-03', t1:'Portugal',     g1:1, t2:'DR Congo',            g2:1 },
+  { group:'L', date:'Jun 18', time:'06:00', sort:'20260618-06', t1:'England',      g1:4, t2:'Croatia',             g2:2 },
 ].sort((a, b) => a.sort.localeCompare(b.sort)).map(m => ({ ...m, scored: m.sort >= '20260616' }));
 
 // All upcoming (unplayed) matches — all times AEST (UTC+10)
 const UPCOMING_MATCHES = [
-  // Jun 18 AEST (Jun 17 US) – Groups K, L
-  { group:'K', date:'Jun 18', time:'03:00', sort:'20260618-03', t1:'Portugal',            t2:'DR Congo' },
-  { group:'L', date:'Jun 18', time:'06:00', sort:'20260618-06', t1:'England',             t2:'Croatia' },
+  // Jun 18 AEST (Jun 17 US) – Groups K, L (Portugal/England done; Ghana & Uzbekistan still to play)
   { group:'L', date:'Jun 18', time:'09:00', sort:'20260618-09', t1:'Ghana',               t2:'Panama' },
   { group:'K', date:'Jun 18', time:'12:00', sort:'20260618-12', t1:'Uzbekistan',          t2:'Colombia' },
   // Jun 19 AEST (Jun 18 US) – Groups A, B

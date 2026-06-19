@@ -230,9 +230,9 @@
   <div class="wsw-badge">WSW</div>
   <div>
     <h1>Staff World Cup <span>2026</span> Sweepstake</h1>
-    <p>Western Sydney Wanderers FB &nbsp;·&nbsp; 6 pts exact score &nbsp;·&nbsp; 3 pts correct winner</p>
+    <p>Western Sydney Wanderers FC &nbsp;·&nbsp; 6 pts exact score &nbsp;·&nbsp; 3 pts correct winner</p>
   </div>
-  <div class="updated-badge" id="updatedBadge">Updated Jun 19 · AEST</div>
+  <div class="updated-badge" id="updatedBadge">Updated Jun 19 (2) · AEST</div>
 </header>
 
 <div class="tabs">
@@ -322,13 +322,13 @@ const ACTUAL_RESULTS = [
   // Jun 19 AEST (Jun 18 US)
   { group:'A', date:'Jun 19', time:'02:00', sort:'20260619-02', t1:'Czechia',      g1:1, t2:'South Africa',        g2:1 },
   { group:'B', date:'Jun 19', time:'05:00', sort:'20260619-05', t1:'Switzerland',  g1:4, t2:'Bosnia-Herzegovina',  g2:1 },
+  // Jun 19 AEST (Jun 18 US) – Groups A, B (remaining)
+  { group:'B', date:'Jun 19', time:'08:00', sort:'20260619-08', t1:'Canada',       g1:6, t2:'Qatar',       g2:0 },
+  { group:'A', date:'Jun 19', time:'11:00', sort:'20260619-11', t1:'Mexico',       g1:1, t2:'South Korea', g2:0 },
 ].sort((a, b) => a.sort.localeCompare(b.sort)).map(m => ({ ...m, scored: m.sort >= '20260616' }));
 
 // All upcoming (unplayed) matches — all times AEST (UTC+10)
 const UPCOMING_MATCHES = [
-  // Jun 19 AEST (Jun 18 US) – Groups A, B
-  { group:'B', date:'Jun 19', time:'08:00', sort:'20260619-08', t1:'Canada',              t2:'Qatar' },
-  { group:'A', date:'Jun 19', time:'11:00', sort:'20260619-11', t1:'Mexico',              t2:'South Korea' },
   // Jun 20 AEST (Jun 19 US) – Groups C, D
   { group:'D', date:'Jun 20', time:'05:00', sort:'20260620-05', t1:'USA',                 t2:'Australia' },
   { group:'C', date:'Jun 20', time:'08:00', sort:'20260620-08', t1:'Scotland',            t2:'Morocco' },
@@ -405,21 +405,18 @@ function getWinner(g1, g2) {
 }
 
 const TEAM_ALIASES = { 'Congo DR': 'DR Congo', 'Iran': 'IR Iran' };
-const TEAM_ALIASES_REV = Object.fromEntries(Object.entries(TEAM_ALIASES).map(([k,v]) => [v,k]));
 function normalizeTeam(t) { return TEAM_ALIASES[t] || t; }
-function denormalizeTeam(t) { return TEAM_ALIASES_REV[t] || t; }
 
 function getPrediction(contestant, t1, t2) {
   const gp = GROUP_PREDS[contestant];
   if (!gp) return null;
   const n1 = normalizeTeam(t1), n2 = normalizeTeam(t2);
-  const d1 = denormalizeTeam(t1), d2 = denormalizeTeam(t2);
-  // Try key as t1|t2 direction (normal + aliased variants)
-  for (const k of [`${t1}|${t2}`, `${n1}|${n2}`, `${t1}|${n2}`, `${n1}|${t2}`, `${d1}|${d2}`, `${d1}|${t2}`, `${t1}|${d2}`]) {
+  // Try key as t1|t2 direction (normal)
+  for (const k of [`${t1}|${t2}`, `${n1}|${n2}`, `${t1}|${n2}`, `${n1}|${t2}`]) {
     if (gp[k] !== undefined) return { p1: gp[k][0], p2: gp[k][1] };
   }
-  // Try key as t2|t1 direction (swapped + aliased variants)
-  for (const k of [`${t2}|${t1}`, `${n2}|${n1}`, `${t2}|${n1}`, `${n2}|${t1}`, `${d2}|${d1}`, `${d2}|${t1}`, `${t2}|${d1}`]) {
+  // Try key as t2|t1 direction (swapped)
+  for (const k of [`${t2}|${t1}`, `${n2}|${n1}`, `${t2}|${n1}`, `${n2}|${t1}`]) {
     if (gp[k] !== undefined) return { p1: gp[k][1], p2: gp[k][0] };
   }
   return null;

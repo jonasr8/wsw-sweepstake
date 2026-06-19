@@ -326,7 +326,7 @@ const ACTUAL_RESULTS = [
 
 // All upcoming (unplayed) matches — all times AEST (UTC+10)
 const UPCOMING_MATCHES = [
-  // Jun 19 AEST (Jun 18 US) – Groups A, B (remaining)
+  // Jun 19 AEST (Jun 18 US) – Groups A, B
   { group:'B', date:'Jun 19', time:'08:00', sort:'20260619-08', t1:'Canada',              t2:'Qatar' },
   { group:'A', date:'Jun 19', time:'11:00', sort:'20260619-11', t1:'Mexico',              t2:'South Korea' },
   // Jun 20 AEST (Jun 19 US) – Groups C, D
@@ -405,18 +405,21 @@ function getWinner(g1, g2) {
 }
 
 const TEAM_ALIASES = { 'Congo DR': 'DR Congo', 'Iran': 'IR Iran' };
+const TEAM_ALIASES_REV = Object.fromEntries(Object.entries(TEAM_ALIASES).map(([k,v]) => [v,k]));
 function normalizeTeam(t) { return TEAM_ALIASES[t] || t; }
+function denormalizeTeam(t) { return TEAM_ALIASES_REV[t] || t; }
 
 function getPrediction(contestant, t1, t2) {
   const gp = GROUP_PREDS[contestant];
   if (!gp) return null;
   const n1 = normalizeTeam(t1), n2 = normalizeTeam(t2);
-  // Try key as t1|t2 direction (normal)
-  for (const k of [`${t1}|${t2}`, `${n1}|${n2}`, `${t1}|${n2}`, `${n1}|${t2}`]) {
+  const d1 = denormalizeTeam(t1), d2 = denormalizeTeam(t2);
+  // Try key as t1|t2 direction (normal + aliased variants)
+  for (const k of [`${t1}|${t2}`, `${n1}|${n2}`, `${t1}|${n2}`, `${n1}|${t2}`, `${d1}|${d2}`, `${d1}|${t2}`, `${t1}|${d2}`]) {
     if (gp[k] !== undefined) return { p1: gp[k][0], p2: gp[k][1] };
   }
-  // Try key as t2|t1 direction (swapped)
-  for (const k of [`${t2}|${t1}`, `${n2}|${n1}`, `${t2}|${n1}`, `${n2}|${t1}`]) {
+  // Try key as t2|t1 direction (swapped + aliased variants)
+  for (const k of [`${t2}|${t1}`, `${n2}|${n1}`, `${t2}|${n1}`, `${n2}|${t1}`, `${d2}|${d1}`, `${d2}|${t1}`, `${t2}|${d1}`]) {
     if (gp[k] !== undefined) return { p1: gp[k][1], p2: gp[k][0] };
   }
   return null;

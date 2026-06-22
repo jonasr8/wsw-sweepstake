@@ -232,7 +232,7 @@
     <h1>Staff World Cup <span>2026</span> Sweepstake</h1>
     <p>Western Sydney Wanderers FC &nbsp;·&nbsp; 6 pts exact score &nbsp;·&nbsp; 3 pts correct winner</p>
   </div>
-  <div class="updated-badge" id="updatedBadge">Updated Jun 21 · AEST</div>
+  <div class="updated-badge" id="updatedBadge">Updated Jun 22 · AEST</div>
 </header>
 
 <div class="tabs">
@@ -335,15 +335,15 @@ const ACTUAL_RESULTS = [
   { group:'E', date:'Jun 21', time:'06:00', sort:'20260621-06',   t1:'Germany',     g1:2, t2:"Côte d'Ivoire",  g2:1 },
   { group:'E', date:'Jun 21', time:'10:00', sort:'20260621-10',   t1:'Ecuador',     g1:0, t2:'Curacao',        g2:0 },
   { group:'F', date:'Jun 21', time:'14:00', sort:'20260621-14',   t1:'Tunisia',     g1:0, t2:'Japan',          g2:4 },
+  // Jun 22 AEST (Jun 21 US) – Groups G, H
+  { group:'H', date:'Jun 22', time:'02:00', sort:'20260622-02',   t1:'Spain',        g1:4, t2:'Saudi Arabia',   g2:0 },
+  { group:'G', date:'Jun 22', time:'05:00', sort:'20260622-05',   t1:'Belgium',      g1:0, t2:'IR Iran',        g2:0 },
+  { group:'H', date:'Jun 22', time:'08:00', sort:'20260622-08',   t1:'Uruguay',      g1:2, t2:'Cabo Verde',     g2:2 },
+  { group:'G', date:'Jun 22', time:'11:00', sort:'20260622-11',   t1:'New Zealand',  g1:1, t2:'Egypt',          g2:3 },
 ].sort((a, b) => a.sort.localeCompare(b.sort)).map(m => ({ ...m, scored: m.sort >= '20260616' }));
 
 // All upcoming (unplayed) matches — all times AEST (UTC+10)
 const UPCOMING_MATCHES = [
-  // Jun 22 AEST (Jun 21 US) – Groups G, H
-  { group:'H', date:'Jun 22', time:'02:00', sort:'20260622-02', t1:'Spain',               t2:'Saudi Arabia' },
-  { group:'G', date:'Jun 22', time:'05:00', sort:'20260622-05', t1:'Belgium',             t2:'IR Iran' },
-  { group:'H', date:'Jun 22', time:'08:00', sort:'20260622-08', t1:'Uruguay',             t2:'Cabo Verde' },
-  { group:'G', date:'Jun 22', time:'11:00', sort:'20260622-11', t1:'New Zealand',         t2:'Egypt' },
   // Jun 23 AEST (Jun 22 US) – Groups I, J
   { group:'J', date:'Jun 23', time:'03:00', sort:'20260623-03', t1:'Argentina',           t2:'Austria' },
   { group:'I', date:'Jun 23', time:'07:00', sort:'20260623-07', t1:'France',              t2:'Iraq' },

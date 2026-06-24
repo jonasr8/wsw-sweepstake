@@ -290,7 +290,7 @@
 const CONTESTANTS = ['ALEX','ANEL','ANTE','EDDIE','JONAS','LACHLAN','VICTOR','ZAC VALLORANI'];
 
 // Last updated timestamp (AEST = UTC+10)
-const LAST_UPDATED = '2026-06-24T08:20:00+10:00';
+const LAST_UPDATED = '2026-06-24T17:01:00+10:00';
 
 // Actual results - team names MUST match prediction keys
 // sort field: "YYYYMMDD-HH" for chronological ordering
@@ -355,13 +355,12 @@ const ACTUAL_RESULTS = [
   // Jun 24 AEST (Jun 23 US) – Groups K, L
   { group:'K', date:'Jun 24', time:'03:00', sort:'20260624-03',   t1:'Portugal',     g1:5, t2:'Uzbekistan',      g2:0 },
   { group:'L', date:'Jun 24', time:'06:00', sort:'20260624-06',   t1:'England',      g1:0, t2:'Ghana',           g2:0 },
+  { group:'L', date:'Jun 24', time:'09:00', sort:'20260624-09',   t1:'Panama',       g1:0, t2:'Croatia',          g2:1 },
+  { group:'K', date:'Jun 24', time:'12:00', sort:'20260624-12',   t1:'Colombia',     g1:1, t2:'DR Congo',         g2:0 },
 ].sort((a, b) => a.sort.localeCompare(b.sort)).map(m => ({ ...m, scored: m.sort >= '20260616' }));
 
 // All upcoming (unplayed) matches — all times AEST (UTC+10)
 const UPCOMING_MATCHES = [
-  // Jun 24 AEST (Jun 23 US) – Groups K, L (remaining)
-  { group:'L', date:'Jun 24', time:'09:00', sort:'20260624-09', t1:'Panama',              t2:'Croatia' },
-  { group:'K', date:'Jun 24', time:'12:00', sort:'20260624-12', t1:'Colombia',            t2:'DR Congo' },
   // Jun 25 AEST (Jun 24 US) – Final round Groups A, B, C (simultaneous)
   { group:'B', date:'Jun 25', time:'05:00', sort:'20260625-05a', t1:'Switzerland',        t2:'Canada' },
   { group:'B', date:'Jun 25', time:'05:00', sort:'20260625-05b', t1:'Bosnia-Herzegovina', t2:'Qatar' },

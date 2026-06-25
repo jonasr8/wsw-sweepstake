@@ -290,7 +290,7 @@
 const CONTESTANTS = ['ALEX','ANEL','ANTE','EDDIE','JONAS','LACHLAN','VICTOR','ZAC VALLORANI'];
 
 // Last updated timestamp (AEST = UTC+10)
-const LAST_UPDATED = '2026-06-25T13:41:00+10:00';
+const LAST_UPDATED = '2026-06-25T13:44:00+10:00';
 
 // Actual results - team names MUST match prediction keys
 // sort field: "YYYYMMDD-HH" for chronological ordering
@@ -410,20 +410,30 @@ function getWinner(g1, g2) {
   return 0; // draw
 }
 
-const TEAM_ALIASES = { 'Congo DR': 'DR Congo', 'Iran': 'IR Iran' };
-function normalizeTeam(t) { return TEAM_ALIASES[t] || t; }
+const TEAM_ALIASES = { 'Congo DR': 'DR Congo', 'Congo': 'DR Congo', 'DR CONGO': 'DR Congo', 'Iran': 'IR Iran' };
+function normalizeTeam(t) { return TEAM_ALIASES[t] || TEAM_ALIASES[t.toUpperCase()] || t; }
+
+// Build all alias variants for a team (canonical + all aliases that map to it)
+function teamVariants(t) {
+  const canonical = normalizeTeam(t);
+  const variants = new Set([t, canonical]);
+  for (const [alias, canon] of Object.entries(TEAM_ALIASES)) {
+    if (canon === canonical) variants.add(alias);
+  }
+  return [...variants];
+}
 
 function getPrediction(contestant, t1, t2) {
   const gp = GROUP_PREDS[contestant];
   if (!gp) return null;
-  const n1 = normalizeTeam(t1), n2 = normalizeTeam(t2);
-  // Try key as t1|t2 direction (normal)
-  for (const k of [`${t1}|${t2}`, `${n1}|${n2}`, `${t1}|${n2}`, `${n1}|${t2}`]) {
-    if (gp[k] !== undefined) return { p1: gp[k][0], p2: gp[k][1] };
+  const v1 = teamVariants(t1), v2 = teamVariants(t2);
+  // Try all variant combinations forward
+  for (const a of v1) for (const b of v2) {
+    if (gp[`${a}|${b}`] !== undefined) { const g = gp[`${a}|${b}`]; return { p1: g[0], p2: g[1] }; }
   }
-  // Try key as t2|t1 direction (swapped)
-  for (const k of [`${t2}|${t1}`, `${n2}|${n1}`, `${t2}|${n1}`, `${n2}|${t1}`]) {
-    if (gp[k] !== undefined) return { p1: gp[k][1], p2: gp[k][0] };
+  // Try all variant combinations swapped
+  for (const a of v2) for (const b of v1) {
+    if (gp[`${a}|${b}`] !== undefined) { const g = gp[`${a}|${b}`]; return { p1: g[1], p2: g[0] }; }
   }
   return null;
 }

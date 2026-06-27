@@ -232,7 +232,7 @@
     <h1>Staff World Cup <span>2026</span> Sweepstake</h1>
     <p>Western Sydney Wanderers FC &nbsp;·&nbsp; 6 pts exact score &nbsp;·&nbsp; 3 pts correct winner</p>
   </div>
-  <div class="updated-badge" id="updatedBadge">Updated 27 Jun · 5:52 PM AEST</div>
+  <div class="updated-badge" id="updatedBadge">Updated 27 Jun · 7:15 PM AEST</div>
 </header>
 
 <div class="tabs">
@@ -368,11 +368,11 @@ const ACTUAL_RESULTS = [
 
 // All upcoming (unplayed) matches — all times AEST (UTC+10)
 const UPCOMING_MATCHES = [
-  // Jun 27 AEST (Jun 26 US) – Final round Groups G, H (simultaneous)
-  { group:'H', date:'Jun 27', time:'10:00', sort:'20260627-10a', t1:'Cabo Verde',         t2:'Saudi Arabia' },
-  { group:'H', date:'Jun 27', time:'10:00', sort:'20260627-10b', t1:'Uruguay',            t2:'Spain' },
-  { group:'G', date:'Jun 27', time:'13:00', sort:'20260627-13a', t1:'Egypt',              t2:'IR Iran' },
-  { group:'G', date:'Jun 27', time:'13:00', sort:'20260627-13b', t1:'New Zealand',        t2:'Belgium' },
+  // Jun 27 AEST (Jun 26 US) – Groups G, H final round
+  { group:'H', date:'Jun 27', time:'10:00', sort:'20260627-10a', t1:'Cabo Verde',         g1:0, t2:'Saudi Arabia',        g2:0 },
+  { group:'H', date:'Jun 27', time:'10:00', sort:'20260627-10b', t1:'Uruguay',            g1:0, t2:'Spain',               g2:1 },
+  { group:'G', date:'Jun 27', time:'13:00', sort:'20260627-13a', t1:'Egypt',              g1:1, t2:'IR Iran',             g2:1 },
+  { group:'G', date:'Jun 27', time:'13:00', sort:'20260627-13b', t1:'New Zealand',        g1:1, t2:'Belgium',             g2:5 },
   // Jun 28 AEST (Jun 27 US) – Final round Groups J, K, L (simultaneous)
   { group:'L', date:'Jun 28', time:'07:00', sort:'20260628-07a', t1:'Panama',             t2:'England' },
   { group:'L', date:'Jun 28', time:'07:00', sort:'20260628-07b', t1:'Croatia',            t2:'Ghana' },

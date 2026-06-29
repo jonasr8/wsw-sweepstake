@@ -232,7 +232,7 @@
     <h1>Staff World Cup <span>2026</span> Sweepstake</h1>
     <p>Western Sydney Wanderers FC &nbsp;·&nbsp; 6 pts exact score &nbsp;·&nbsp; 3 pts correct winner</p>
   </div>
-  <div class="updated-badge" id="updatedBadge">Updated 27 Jun · 7:15 PM AEST</div>
+  <div class="updated-badge" id="updatedBadge">Updated 29 Jun · 10:01 PM AEST</div>
 </header>
 
 <div class="tabs">
@@ -364,22 +364,22 @@ const ACTUAL_RESULTS = [
   // Jun 27 AEST (Jun 26 US) – Group I final round
   { group:'I', date:'Jun 27', time:'05:00', sort:'20260627-05a', t1:'Norway',             g1:1, t2:'France',              g2:4 },
   { group:'I', date:'Jun 27', time:'05:00', sort:'20260627-05b', t1:'Senegal',            g1:5, t2:'Iraq',               g2:0 },
-].sort((a, b) => a.sort.localeCompare(b.sort)).map(m => ({ ...m, scored: m.sort >= '20260616' }));
-
-// All upcoming (unplayed) matches — all times AEST (UTC+10)
-const UPCOMING_MATCHES = [
   // Jun 27 AEST (Jun 26 US) – Groups G, H final round
   { group:'H', date:'Jun 27', time:'10:00', sort:'20260627-10a', t1:'Cabo Verde',         g1:0, t2:'Saudi Arabia',        g2:0 },
   { group:'H', date:'Jun 27', time:'10:00', sort:'20260627-10b', t1:'Uruguay',            g1:0, t2:'Spain',               g2:1 },
   { group:'G', date:'Jun 27', time:'13:00', sort:'20260627-13a', t1:'Egypt',              g1:1, t2:'IR Iran',             g2:1 },
   { group:'G', date:'Jun 27', time:'13:00', sort:'20260627-13b', t1:'New Zealand',        g1:1, t2:'Belgium',             g2:5 },
   // Jun 28 AEST (Jun 27 US) – Final round Groups J, K, L (simultaneous)
-  { group:'L', date:'Jun 28', time:'07:00', sort:'20260628-07a', t1:'Panama',             t2:'England' },
-  { group:'L', date:'Jun 28', time:'07:00', sort:'20260628-07b', t1:'Croatia',            t2:'Ghana' },
-  { group:'K', date:'Jun 28', time:'09:30', sort:'20260628-0930a', t1:'Colombia',         t2:'Portugal' },
-  { group:'K', date:'Jun 28', time:'09:30', sort:'20260628-0930b', t1:'DR Congo',         t2:'Uzbekistan' },
-  { group:'J', date:'Jun 28', time:'12:00', sort:'20260628-12a', t1:'Algeria',            t2:'Austria' },
-  { group:'J', date:'Jun 28', time:'12:00', sort:'20260628-12b', t1:'Jordan',             t2:'Argentina' },
+  { group:'L', date:'Jun 28', time:'07:00', sort:'20260628-07a', t1:'Panama',             g1:0, t2:'England',             g2:2 },
+  { group:'L', date:'Jun 28', time:'07:00', sort:'20260628-07b', t1:'Croatia',            g1:2, t2:'Ghana',               g2:1 },
+  { group:'K', date:'Jun 28', time:'09:30', sort:'20260628-0930a', t1:'Colombia',         g1:0, t2:'Portugal',            g2:0 },
+  { group:'K', date:'Jun 28', time:'09:30', sort:'20260628-0930b', t1:'DR Congo',         g1:3, t2:'Uzbekistan',          g2:1 },
+  { group:'J', date:'Jun 28', time:'12:00', sort:'20260628-12a', t1:'Algeria',            g1:3, t2:'Austria',             g2:3 },
+  { group:'J', date:'Jun 28', time:'12:00', sort:'20260628-12b', t1:'Jordan',             g1:1, t2:'Argentina',           g2:3 },
+].sort((a, b) => a.sort.localeCompare(b.sort)).map(m => ({ ...m, scored: m.sort >= '20260616' }));
+
+// All upcoming (unplayed) matches — all times AEST (UTC+10)
+const UPCOMING_MATCHES = [
 ].sort((a, b) => a.sort.localeCompare(b.sort));
 
 // Group stage predictions: { contestant: { 'TeamA|TeamB': [hg, ag] } }
